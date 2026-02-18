@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.ConstrainedExecution;
 
 class Program
 {
@@ -29,6 +30,26 @@ class Program
 
     static void Main(string[] args)
     {
-        // ponto de entrada válido. Chame o BinarySearch a partir daqui ou de outro código conforme necessário.
+        int[] arrayOrdenado = { 2, 5, 8, 12, 16, 23, 38, 45, 56, 67, 78 };
+        int valorBuscado = 23;
+
+        Console.WriteLine("Array: " + string.Join(", ", arrayOrdenado));
+        Console.WriteLine($"Buscando o valor: {valorBuscado}");
+
+        int resultado = BinarySearch(arrayOrdenado, valorBuscado);
+
+        if (resultado != -1)
+        {
+            Console.WriteLine($"Valor encontrado: {resultado}");
+        }
+        else
+        {
+            Console.WriteLine("Valor não encontrado no indice.");
+        }
+
+        //Teste com valor não existente
+        Console.WriteLine("\nBuscando valor não existente (99):");
+        int resultadoNaoExiste = BinarySearch(arrayOrdenado, 99);
+        Console.WriteLine(resultadoNaoExiste == -1 ? "Elemento não encontrado" : $"Elemento encontrado no indice {resultadoNaoExiste}");
     }
 }
